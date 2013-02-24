@@ -1,0 +1,17 @@
+<template name="tabs">
+  <div class="span12">
+      <ul id="tabs" class="nav nav-tabs">
+        <li id="scouts-tab" class="active"><a data-toggle="tab" href="#">Scouts</a></li>
+        <li id="dens-tab"><a data-toggle="tab" href="#">Dens</a></li>
+        <li id="pack-tab"><a data-toggle="tab" href="#">Pack</a></li>
+      </ul>
+  </div>
+</template>
+
+<template name="tab">
+  <div class="span12">
+    {{#if scouts}}
+    {{> scouts}}
+    {{/if}}
+  </div>
+</template>

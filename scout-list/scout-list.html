@@ -1,0 +1,57 @@
+<template name="scouts">
+  
+  <div class="form-inline">
+    <div class="btn-group">
+      <button class="btn">Active Scouts</button>
+      <button class="btn">All Scouts</button>
+    </div>
+    <div class="input-append">
+      <input class="input-xlarge" id="appendedInputButton" type="text" placeholder="Scout name..." />
+      <button class="btn">Filter Active</button>
+      <button class="btn">Filter All</button>
+    </div>
+  </div>
+  
+  <br/>
+  
+  <table class="table well">
+    <thead><tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Rank</th>
+      <th>Guardian</th>
+    </tr></thead>
+    <tbody>
+      {{#each scouts}}
+        <tr>{{> scout}}</tr>
+      {{else}}
+        <tr><td colspan="4">No Scouts found</td></tr>
+      {{/each}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><input id="addScoutFirstName" class="addScout span12" type="text"/></td>
+        <td><input id="addScoutLastName" class="addScout span12" type="text"/></td>
+        <td><select id="addScoutRank" class="addScout span12">
+          <option>Tiger</option>
+          <option>Wolf</option>
+          <option>Bear</option>
+          <option>Webelos I</option>
+          <option>Webelos II</option>
+        </select></td>
+        <td><input class="addScout span12" type="text"/></td>
+      </tr>
+    </tfoot>
+  </table>
+  
+  
+  
+
+</template>
+
+<template name="scout">
+  <td>{{firstName}}</td>
+  <td>{{lastName}}</td>
+  <td>{{rank}}</td>
+  <td>{{guardian}}</td>
+</template>
