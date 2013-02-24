@@ -10,5 +10,6 @@ Pack770.Model.Scouts.all = function() {
 };
 
 Pack770.Model.Scouts.insert = function(scout) {
+  scout.active = true;
   Scouts.insert(scout);  
 };

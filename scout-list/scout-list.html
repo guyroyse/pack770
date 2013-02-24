@@ -16,20 +16,21 @@
   
   <table class="table well">
     <thead><tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Rank</th>
-      <th>Guardian</th>
+      <th class="span1"></th>
+      <th class="span4">First Name</th>
+      <th class="span4">Last Name</th>
+      <th class="span3">Rank</th>
     </tr></thead>
     <tbody>
       {{#each scouts}}
         <tr>{{> scout}}</tr>
       {{else}}
-        <tr><td colspan="4">No Scouts found</td></tr>
+        <tr><td/><td colspan="5">No Scouts found</td></tr>
       {{/each}}
     </tbody>
     <tfoot>
       <tr>
+        <td></td>
         <td><input id="addScoutFirstName" class="addScout span12" type="text"/></td>
         <td><input id="addScoutLastName" class="addScout span12" type="text"/></td>
         <td><select id="addScoutRank" class="addScout span12">
@@ -39,19 +40,23 @@
           <option>Webelos I</option>
           <option>Webelos II</option>
         </select></td>
-        <td><input class="addScout span12" type="text"/></td>
       </tr>
     </tfoot>
   </table>
-  
-  
-  
 
 </template>
 
 <template name="scout">
+  <td>
+    <div class="text-center">
+      {{#if active}}
+        <i class="icon-star"/>
+      {{else}}
+        <i class="icon-star-empty">
+      {{/if}}
+    </div>
+  </td>
   <td>{{firstName}}</td>
   <td>{{lastName}}</td>
   <td>{{rank}}</td>
-  <td>{{guardian}}</td>
 </template>
