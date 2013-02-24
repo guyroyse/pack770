@@ -45,6 +45,10 @@
         resetForm();
         insertScout(scout);
       };
+      
+      self.onToggleScoutStatus = function(id) {
+        model.toggleStatus(id);
+      };
 
       return self;
       
@@ -58,7 +62,10 @@
       'keydown .addScout' : function(event) {
         if (event.which === 13) 
           controller.onAddScout();
-      }       
+      },
+      'click .star' : function(event) {
+        controller.onToggleScoutStatus(this._id);
+      }
     };
     
   };
