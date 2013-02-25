@@ -1,7 +1,7 @@
 (function() {
 
   if (Meteor.isClient) {
-    
+
     var model = Pack770.Model.Scouts;
     
     var view = (function() {
@@ -39,6 +39,22 @@
       var insertScout = function(scout) {
         model.insert(scout);
       };
+      
+      self.onStartup = function() {
+        Session.set("scoutsFilter", "active");
+      };
+      
+      self.onViewActive = function() {
+        Session.set("scoutsFilter", "active");
+      };
+
+      self.onViewInactive = function() {
+        Session.set("scoutsFilter", "inactive");
+      };
+
+      self.onViewAll = function() {
+        Session.set("scoutsFilter", "all");
+      };
 
       self.onAddScout = function() {
         var scout = extractScout();
@@ -47,15 +63,24 @@
       };
       
       self.onToggleScoutStatus = function(id) {
-        model.toggleStatus(id);
+        var scout = model.fetchById(id);
+        scout.toggleActive();
       };
 
       return self;
       
     })();
-    
+
+    Meteor.startup(controller.onStartup);
+
     Template.scouts.scouts = function() {
-      return model.all();
+      var filter = Session.get("scoutsFilter"); 
+      if (filter === "all")
+        return model.fetchAll();
+      if (filter == "active")
+        return model.fetchActive();
+      if (filter == "inactive")
+        return model.fetchInactive();
     };
     
     Template.scouts.events = {
@@ -65,6 +90,15 @@
       },
       'click .star' : function(event) {
         controller.onToggleScoutStatus(this._id);
+      },
+      'click #viewAllScouts' : function(event) {
+        controller.onViewAll();
+      },
+      'click #viewActiveScouts' : function(event) {
+        controller.onViewActive();        
+      },
+      'click #viewInactiveScouts' : function(event) {
+        controller.onViewInactive();
       }
     };
     
