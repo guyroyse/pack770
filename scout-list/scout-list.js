@@ -8,10 +8,10 @@
       
       var self = Object.create(Pack770.Common.PassiveView);
 
-      self.firstName = self.getSetFieldFn("addScoutFirstName");
-      self.lastName = self.getSetFieldFn("addScoutLastName");
-      self.rank =  self.getSetFieldFn("addScoutRank");
-      self.focusFirstName = self.setFocusFn("addScoutFirstName");
+      self.firstName = self.fieldFn("addScoutFirstName");
+      self.lastName = self.fieldFn("addScoutLastName");
+      self.rank =  self.fieldFn("addScoutRank");
+      self.focusFirstName = self.focusFn("addScoutFirstName");
       
       return self;
       
@@ -62,6 +62,10 @@
         insertScout(scout);
       };
       
+      self.onScoutSelect = function(id) {
+        console.log("scout selected " + id);
+      };
+      
       self.onToggleScoutStatus = function(id) {
         var scout = model.fetchById(id);
         scout.toggleActive();
@@ -88,9 +92,6 @@
         if (event.which === 13) 
           controller.onAddScout();
       },
-      'click .star' : function(event) {
-        controller.onToggleScoutStatus(this._id);
-      },
       'click #viewAllScouts' : function(event) {
         controller.onViewAll();
       },
@@ -100,6 +101,15 @@
       'click #viewInactiveScouts' : function(event) {
         controller.onViewInactive();
       }
+    };
+    
+    Template.scout.events = {
+      'click .toggleActive' : function(event) {
+        controller.onToggleScoutStatus(this._id);
+      },
+      'click .editScout' : function(event) {
+        controller.onScoutSelect(this._id);
+      }      
     };
     
   };

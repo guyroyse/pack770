@@ -1,0 +1,27 @@
+<template name="login">
+
+  <div class="form-inline pull-right">
+
+    <div>
+      {{#if currentUser}}
+      You are logged in as <b>{{currentUser.emails.0.address}}</b>. Not you? <a href="#" id="sign-out">Sign out</a>.
+      {{else}}
+      <input type="text" class="input-medium" id="sign-in-email" placeholder="Email">
+      <input type="password" class="input-medium" id="sign-in-password" placeholder="Password">
+      <button class="btn" id="sign-in">Log In</button>
+      {{/if}}
+    </div>
+
+    {{#unless currentUser}}
+    <div>
+      {{#if loginFailed}}
+      Login failed. <a href="#" id="forgot-password">Reset your password</a> or <a href="#" id="sign-up">sign up</a>.
+      {{else}}
+      Not a user? <a href="#" id="sign-up">Sign up</a>.
+      {{/if}}
+    </div>
+    {{/unless}}
+
+  </div>
+
+</template>

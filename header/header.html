@@ -1,4 +1,11 @@
 <template name="header">
-  <h1 class="span10">{{packName}}</h1>
-  <div class="span2 text-right">{{loginButtons align="right"}}</div>
+
+  <div class="page-header clearfix">
+    
+    <h1 class="span6">{{packName}} <small>{{packLocation}}</small></h1>
+
+    <div class="span6">{{> login}}</div>
+
+  </div>
+
 </template>

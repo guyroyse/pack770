@@ -12,10 +12,10 @@
   
   <table class="table well">
     <thead><tr>
-      <th class="span1"></th>
       <th class="span4">First Name</th>
       <th class="span4">Last Name</th>
-      <th class="span3">Rank</th>
+      <th class="span2">Den</th>
+      <th class="span2"></th>
     </tr></thead>
     <tbody>
       {{#each scouts}}
@@ -26,7 +26,6 @@
     </tbody>
     <tfoot>
       <tr>
-        <td></td>
         <td><input id="addScoutFirstName" class="addScout span12" type="text"/></td>
         <td><input id="addScoutLastName" class="addScout span12" type="text"/></td>
         <td><select id="addScoutRank" class="addScout span12">
@@ -36,6 +35,7 @@
           <option>Webelos I</option>
           <option>Webelos II</option>
         </select></td>
+        <td></td>
       </tr>
     </tfoot>
   </table>
@@ -43,16 +43,17 @@
 </template>
 
 <template name="scout">
-  <td>
-    <div class="star text-center">
-      {{#if active}}
-        <i class="icon-star"/>
-      {{else}}
-        <i class="icon-star-empty" />
-      {{/if}}
-    </div>
-  </td>
   <td>{{firstName}}</td>
   <td>{{lastName}}</td>
   <td>{{rank}}</td>
+  <td>
+    <div class="btn-group text-center">
+      <button class="editScout btn btn-mini"><i class="icon-pencil"/></button>
+      {{#if active}}
+        <button class="toggleActive btn btn-mini btn-success">Active</button>
+      {{else}}
+        <button class="toggleActive btn btn-mini btn-inverse">Inactive</button>
+      {{/if}}
+    </div>
+  </td>
 </template>
