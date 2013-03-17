@@ -3,21 +3,27 @@
   <form id="sign-in-form" class="form-inline pull-right">
 
     <div>
-      <input type="email" class="input-medium" id="sign-in-email" placeholder="Email" required>
-      <input type="password" class="input-medium" id="sign-in-password" placeholder="Password" required>
-      <input type="submit" class="btn" id="sign-in" value="Log In">
+      {{#if currentUser}}
+        <input type="email" class="input-medium" placeholder="Email" required disabled>
+        <input type="password" class="input-medium" placeholder="Password" required disabled>
+        <input type="submit" class="btn" value="Log In" disabled>
+      {{else}}
+        <input type="email" class="input-medium" id="sign-in-email" placeholder="Email" required>
+        <input type="password" class="input-medium" id="sign-in-password" placeholder="Password" required>
+        <input type="submit" class="btn" id="sign-in" value="Log In">
+      {{/if}}
     </div>
 
     <div><small>
-      {{#unless currentUser}}
+      {{#if currentUser}}
+        You are logged in as <b>{{currentUser.emails.0.address}}</b>. Not you? <a href="#" id="sign-out">Sign out</a>.
+      {{else}}
         {{#if loginFailed}}
           Login failed. <a href="#" id="forgot-password">Reset your password</a> or <a href="#" class="sign-up">sign up</a>.
         {{else}}
           Not a user? <a href="#" class="sign-up">Sign up</a>.
         {{/if}}
-      {{else}}
-        You are logged in as <b>{{currentUser.emails.0.address}}</b>. Not you? <a href="#" id="sign-out">Sign out</a>.
-      {{/unless}}
+      {{/if}}
     </small></div>
 
   </form>
