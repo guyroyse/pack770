@@ -2,8 +2,6 @@
 
   if (Meteor.isClient) {
 
-    var model = Pack770.Model.Scouts;
-    
     var view = (function() {
       
       var self = Object.create(Pack770.Common.PassiveView);
@@ -37,7 +35,7 @@
       };
       
       var insertScout = function(scout) {
-        model.insert(scout);
+        Pack770.Model.Scouts.insert(scout);
       };
       
       self.onStartup = function() {
@@ -66,9 +64,8 @@
         console.log("scout selected " + id);
       };
       
-      self.onToggleScoutStatus = function(id) {
-        var scout = model.fetchById(id);
-        scout.toggleActive();
+      self.onToggleScoutStatus = function(id) {        
+        Pack770.Model.Scouts.toggleField(id, "active");
       };
 
       return self;
@@ -80,11 +77,11 @@
     Template.scouts.scouts = function() {
       var filter = Session.get("scoutsFilter"); 
       if (filter === "all")
-        return model.fetchAll();
+        return Pack770.Model.Scouts.all();
       if (filter == "active")
-        return model.fetchActive();
+        return Pack770.Model.Scouts.active();
       if (filter == "inactive")
-        return model.fetchInactive();
+        return Pack770.Model.Scouts.inactive();
     };
     
     Template.scouts.events = {
