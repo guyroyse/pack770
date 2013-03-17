@@ -17,5 +17,7 @@ if (Meteor.isClient) {
   Template.view.home = function() { return Pack770.Domain.CurrentView.is("home"); };
   Template.view.signUp = function() { return Pack770.Domain.CurrentView.is("signUp"); };
   Template.view.scoutList = function() { return Pack770.Domain.CurrentView.is("scoutList"); };
+  Template.view.denList = function() { return Pack770.Domain.CurrentView.is("denList"); };
+  Template.view.pack = function() { return Pack770.Domain.CurrentView.is("pack"); };
   
 }

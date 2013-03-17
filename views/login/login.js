@@ -62,7 +62,7 @@
       return session.loginFailed();
     };
 
-    Template.header.events = {
+    Template.login.events = {
       'click .sign-up' : function() { controller.onSignUp(); },
       'click #sign-out' : function() { controller.onSignOut(); },
       'submit #sign-in-form' : function() { controller.onSignIn(); return false; }
