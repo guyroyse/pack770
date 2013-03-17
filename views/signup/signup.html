@@ -1,0 +1,52 @@
+<template name="signUp">
+
+  <form id="sign-up-form" class="span6 offset3 controls"
+        oninput="confirm.setCustomValidity(confirm.value != password.value ? 'Passwords do not match.' : '')" >
+    
+    <fieldset>
+    
+      <legend>Signup</legend>    
+      <label>Your Name</label>
+    
+      <div class="controls controls-row">
+        
+        <input id="sign-up-first-name" class="span6" name="first-name"
+               type="text" placeholder="First name" autofocus
+               required>
+        
+        <input id="sign-up-last-name" class="span6" name="last-name"
+               type="text" placeholder="Last name"
+               required>
+        
+      </div>
+
+      <label>Your Email Address</label>
+      <div class="controls controls-row">
+        <input id="sign-up-email" class="span12" name="email"
+               type="email" placeholder="parent@cubscoutspack770.org"
+               required>
+      </div>
+  
+      <label>Password</label>
+      <div class="controls controls-row">
+        
+        <input id="sign-up-password" class="span6" name="password"
+               type="password" placeholder="Choose a password"
+               required pattern=".{6,}" title="Password must be at least 6 characters">
+        
+        <input id="sign-up-confirm" class="span6" name="confirm"
+               type="password" placeholder="Confirm your password"
+               required>
+        
+      </div>
+      
+      <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Create Account">
+        <button id="sign-up-cancel" class="btn btn-inverse">Cancel</button>
+      </div>
+      
+    </fieldset>
+    
+  </form>
+
+</template>

@@ -33,17 +33,25 @@
         session.loginFailed(false);
       };
 
-      self.onSignOut = function() {
-        Meteor.logout();
-      };
-
       self.onSignIn = function() {
         Meteor.loginWithPassword(view.email(), view.password(), function(error) {
-          console.log(error);
-          session.loginFailed(error !== undefined);
+          var failed = error !== undefined;
+          session.loginFailed(failed);
+          if (!failed) {
+            view.password('');
+            view.email('');
+          }
         });
       };
 
+      self.onSignUp = function() {
+        Pack770.Domain.CurrentView.set("signUp");
+      };
+
+      self.onSignOut = function() {
+        Meteor.logout();
+      };
+      
       return self;
 
     })();
@@ -55,10 +63,9 @@
     };
 
     Template.header.events = {
+      'click .sign-up' : function() { controller.onSignUp(); },
       'click #sign-out' : function() { controller.onSignOut(); },
-      'click #sign-in' : function() { controller.onSignIn(); },
-      'keydown #sign-in-email' : function(event) { if (event.which === 13) controller.onSignIn(); },
-      'keydown #sign-in-password' : function(event) { if (event.which === 13) controller.onSignIn(); }
+      'submit #sign-in-form' : function() { controller.onSignIn(); return false; }
     };
 
   }
