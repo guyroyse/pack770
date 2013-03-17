@@ -6,6 +6,9 @@
 
       var self = Object.create(Pack770.Common.PassiveView);
 
+      self.email = self.fieldFn("sign-up-email");
+      self.password = self.fieldFn("sign-up-password");
+
       return self;
 
     })();
@@ -18,7 +21,13 @@
       };
       
       self.onSignUp = function() {
-        Pack770.Domain.CurrentView.set("profile");
+        Accounts.createUser({
+          email: view.email(), 
+          password: view.password() 
+        }, function(status) {
+          console.log(status);
+        });
+        Pack770.Domain.CurrentView.set("home");
       };
       
       self.onCancel = function() {
