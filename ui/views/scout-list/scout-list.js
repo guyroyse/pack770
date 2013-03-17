@@ -35,7 +35,7 @@
       };
       
       var insertScout = function(scout) {
-        Pack770.Model.Scouts.insert(scout);
+        Pack770.Data.Scouts.insert(scout);
       };
       
       self.onStartup = function() {
@@ -65,7 +65,7 @@
       };
       
       self.onToggleScoutStatus = function(id) {        
-        Pack770.Model.Scouts.toggleField(id, "active");
+        Pack770.Data.Scouts.toggleField(id, "active");
       };
 
       return self;
@@ -77,11 +77,11 @@
     Template.scouts.scouts = function() {
       var filter = Session.get("scoutsFilter"); 
       if (filter === "all")
-        return Pack770.Model.Scouts.all();
+        return Pack770.Data.Scouts.all();
       if (filter == "active")
-        return Pack770.Model.Scouts.active();
+        return Pack770.Data.Scouts.active();
       if (filter == "inactive")
-        return Pack770.Model.Scouts.inactive();
+        return Pack770.Data.Scouts.inactive();
     };
     
     Template.scouts.events = {
