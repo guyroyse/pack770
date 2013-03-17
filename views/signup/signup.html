@@ -1,5 +1,11 @@
 <template name="signUp">
 
+  {{#if currentUser}}
+  
+    {{> home}}
+  
+  {{else}}
+
   <form id="sign-up-form" class="span6 offset3 controls"
         oninput="confirm.setCustomValidity(confirm.value != password.value ? 'Passwords do not match.' : '')" >
     
@@ -48,5 +54,7 @@
     </fieldset>
     
   </form>
+  
+  {{/if}}
 
 </template>
