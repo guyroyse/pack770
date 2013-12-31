@@ -11,6 +11,7 @@
 
       self.onSelectPackName = function() {
         Pack770.Domain.CurrentView.set("home");
+        Router.go('home');
       };
 
       return self;

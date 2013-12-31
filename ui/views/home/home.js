@@ -10,15 +10,15 @@
       };
 
       self.onSelectScout = function() {
-        Pack770.Domain.CurrentView.set("scoutList");
+        Router.go('scouts');
       };
 
       self.onSelectDen = function() {
-        Pack770.Domain.CurrentView.set("denList");
+        Router.go('dens');
       };
 
       self.onSelectPack = function() {
-        Pack770.Domain.CurrentView.set("pack");
+        Router.go('pack');
       };
 
       return self;

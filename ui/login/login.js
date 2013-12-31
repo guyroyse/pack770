@@ -45,7 +45,7 @@
       };
 
       self.onSignUp = function() {
-        Pack770.Domain.CurrentView.set("signUp");
+        Router.go('signup');
       };
 
       self.onSignOut = function() {

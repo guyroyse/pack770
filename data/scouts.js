@@ -1,4 +1,3 @@
-var Pack770 = Pack770 || {};
 Pack770.Data = Pack770.Data || {};
 
 Pack770.Data.Scouts = (function() {

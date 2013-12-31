@@ -1,4 +1,3 @@
-var Pack770 = Pack770 || {};
 Pack770.Domain = Pack770.Domain || {};
 
 Pack770.Domain.CurrentView = (function() {
