@@ -12,3 +12,4 @@ jquery
 standard-app-packages
 iron-router
 underscore
+coffeescript
